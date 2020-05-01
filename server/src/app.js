@@ -3,6 +3,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
+const {
+  sequelize
+} = require('./models');
 const config = require('./config');
 
 const app = express();
@@ -21,6 +24,10 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
-app.listen(PORT, () => {
-  console.log(`The server is running on ${PORT}`);
-});
+require('./routes')(app);
+
+sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`The server is running on ${PORT}`);
+  });
+})
