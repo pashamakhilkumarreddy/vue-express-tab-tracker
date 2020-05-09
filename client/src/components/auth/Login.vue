@@ -15,7 +15,7 @@
           <div class="err" v-html="error" />
           <br />
           <v-btn dark class="cyan font-weight-bold" @click="login">
-            Register
+            Login
           </v-btn>
         </form>
       </div>
@@ -45,7 +45,11 @@ export default {
           email: this.email,
           password: this.password,
         });
-        console.log(response.data);
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.user);
+        this.$router.push({
+          name: 'login',
+        });
       } catch (err) {
         console.error(err);
         const {
