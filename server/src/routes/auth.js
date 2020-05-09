@@ -1,13 +1,16 @@
 const router = require('express').Router();
 
 const {
-  AuthenticationController,
+  login,
+  register,
 } = require('../controllers');
 
-const { AuthenticationControllerPolicy } = require('../policies');
+const {
+  AuthenticationControllerPolicy,
+} = require('../policies');
 
-router.post('/login', AuthenticationController.login);
+router.post('/login', login);
 
-router.post('/register', AuthenticationControllerPolicy.register, AuthenticationController.register);
+router.post('/register', AuthenticationControllerPolicy.register, register);
 
 module.exports = router;

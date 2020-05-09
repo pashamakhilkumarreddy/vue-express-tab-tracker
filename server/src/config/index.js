@@ -15,5 +15,6 @@ module.exports = {
     },
   },
   jwt: {
+    JWT_SECRET: process.env.JWT_SECRET || 'secretsecretdude',
   },
 };

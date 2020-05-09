@@ -26,7 +26,7 @@ app.use(express.urlencoded({
 
 require('./routes')(app);
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`The server is running on ${PORT}`);
   });

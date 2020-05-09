@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Home from '@/components/Home.vue';
 import Register from '@/components/auth/Register.vue';
 import Login from '@/components/auth/Login.vue';
 
@@ -11,13 +12,18 @@ export default new VueRouter({
   // base: process.env.BASE_URL,
   routes: [
     {
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
       path: '/register',
-      name: 'Register',
+      name: 'register',
       component: Register,
     },
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       component: Login,
     },
   ],
