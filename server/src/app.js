@@ -30,4 +30,4 @@ sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`The server is running on ${PORT}`);
   });
-})
+});

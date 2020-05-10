@@ -1,5 +1,5 @@
 <template>
-  <v-footer absolute class="font-weight-medium">
+  <v-footer absolute class="font-weight-medium footer">
     <v-col class="text-center" cols="12">
       2020 - <strong>Tab Tracker</strong>
     </v-col>

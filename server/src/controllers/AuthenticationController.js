@@ -54,14 +54,16 @@ module.exports = {
       });
       if (!user) {
         res.status(403).send({
-          error: 'The login information is incorrect',
+          error: true,
+          messages: ['The login information is incorrect'],
         });
         return;
       }
       const isPasswordValid = await user.comparePassword(password);
       if (!isPasswordValid) {
         res.status(403).send({
-          error: 'The login information is incorrect',
+          error: true,
+          messages: ['The login information is incorrect'],
         });
         return;
       }
@@ -73,8 +75,9 @@ module.exports = {
       });
     } catch (err) {
       console.error(err);
-      res.status(403).send({
-        error: 'Internal server error',
+      res.status(500).send({
+        error: true,
+        messages: ['Internal server error'],
       });
     }
   },
