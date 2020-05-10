@@ -17,9 +17,6 @@
   </panel>
 </template>
 <style scoped>
-  .err {
-    color: #f00;
-  }
 </style>
 <script>
 import AuthenticationService from '@/services/AuthenticationService';

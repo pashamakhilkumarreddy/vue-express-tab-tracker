@@ -18,5 +18,11 @@ export default {
 </script>
 
 <style>
+.mb-14 {
+  margin-bottom: 7rem;
+}
 
+.err {
+  color: #f00;
+}
 </style>
