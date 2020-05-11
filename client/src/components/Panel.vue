@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" class="mt-12">
-    <v-col cols="10" xl="7" lg="6" sm="10" xs="10">
+    <v-col xs10>
       <v-card raised class="text-center">
         <v-card-title class="justify-center blue darken-2">
           <h1 class="font-weight-bold white--text">{{title}}</h1>
@@ -8,7 +8,7 @@
 
         <div class="pl-6 pr-6 pt-8 pb-4">
           <slot name="panel-content">
-            No Slot content detected.
+            Nothing here!!!
           </slot>
         </div>
       </v-card>

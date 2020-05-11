@@ -25,13 +25,12 @@
             :rules="[required]"></v-textarea>
           <v-textarea name="tab" label="Tab" value="" v-model="song.tab"
             :rules="[required]"></v-textarea>
-            <!-- <div class="err" v-html="error" /> -->
             <div class="submit-error err" v-if="error">
               {{error}}
             </div>
             <br />
-            <v-btn dark class="blue font-weight-bold" @click="createSong">
-              Create Song
+            <v-btn dark class="blue font-weight-bold" @click="editSong">
+              Edit Song
             </v-btn>
         </template>
       </panel>
@@ -48,9 +47,9 @@ import SongsService from '@/services/SongsService';
 import Panel from '@/components/Panel.vue';
 
 export default {
-  name: 'CreateSong',
+  name: 'EditSong',
   metaInfo: {
-    title: 'Create a new Song',
+    title: 'Edit Song',
   },
   data() {
     return {
@@ -71,16 +70,33 @@ export default {
   components: {
     Panel,
   },
+  async mounted() {
+    try {
+      const { songId } = this.$store.state.route.params;
+      this.song = (await SongsService.getSong(songId)).data.song;
+    } catch (err) {
+      console.error(err);
+      const {
+        messages,
+        error,
+      } = err.response.data;
+      this.error = error ? messages[0] : '';
+    }
+  },
   methods: {
-    async createSong() {
+    async editSong() {
       try {
         this.error = null;
+        const { songId } = this.$store.state.route.params;
         const isSongDataFilled = Object.keys(this.song).every((key) => !!this.song[key]);
         if (isSongDataFilled) {
-          const newSong = await SongsService.createSong(this.song);
-          if (!newSong.data.error && newSong.data.song) {
+          const editedSong = await SongsService.editSong(this.song);
+          if (!editedSong.data.error && editedSong.data.song) {
             this.$router.push({
-              name: 'songs',
+              path: `/songs/${songId}`,
+              params: {
+                songId,
+              },
             });
           }
         } else {

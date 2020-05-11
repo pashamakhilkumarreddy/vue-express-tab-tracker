@@ -1,20 +1,22 @@
 <template>
-  <panel title="Register">
-    <template v-slot:panel-content>
-      <form name="tab-tracker-form" autocomplete="off">
-        <v-text-field label="Email" v-model="email"></v-text-field>
-        <br>
-        <v-text-field label="Password" type="password" v-model="password"
-          autocomplete="new-password">
-        </v-text-field>
-        <div class="err" v-html="error" />
-        <br />
-        <v-btn dark class="cyan font-weight-bold" @click="register">
-          Register
-        </v-btn>
-      </form>
-    </template>
-  </panel>
+  <v-flex xs6 class="m-auto">
+    <panel title="Register">
+      <template v-slot:panel-content>
+        <form name="tab-tracker-form" autocomplete="off">
+          <v-text-field label="Email" v-model="email"></v-text-field>
+          <br>
+          <v-text-field label="Password" type="password" v-model="password"
+            autocomplete="new-password">
+          </v-text-field>
+          <div class="err" v-html="error" />
+          <br />
+          <v-btn dark class="cyan font-weight-bold" @click="register">
+            Register
+          </v-btn>
+        </form>
+      </template>
+    </panel>
+  </v-flex>
 </template>
 <style scoped>
 </style>
@@ -26,6 +28,9 @@ export default {
   name: 'Register',
   components: {
     Panel,
+  },
+  metaInfo: {
+    title: 'Register',
   },
   data() {
     return {

@@ -5,8 +5,9 @@ import Home from '@/components/Home.vue';
 import Register from '@/components/auth/Register.vue';
 import Login from '@/components/auth/Login.vue';
 import CreateSong from '@/components/songs/CreateSong.vue';
+import EditSong from '@/components/songs/EditSong.vue';
 import Songs from '@/components/songs/Songs.vue';
-import Song from '@/components/songs/Song.vue';
+import Song from '@/components/songs/song/Song.vue';
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,11 @@ export default new VueRouter({
       path: '/songs/:songId',
       name: 'song',
       component: Song,
+    },
+    {
+      path: '/songs/:songId/edit',
+      name: 'edit-song',
+      component: EditSong,
     },
   ],
 });

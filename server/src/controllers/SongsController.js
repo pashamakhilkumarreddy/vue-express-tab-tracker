@@ -1,4 +1,6 @@
-const { Song } = require('../models');
+const {
+  Song,
+} = require('../models');
 
 module.exports = {
   async addSong(req, res) {
@@ -24,6 +26,66 @@ module.exports = {
       res.status(200).send({
         error: false,
         songs: JSON.stringify(songs),
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({
+        error: true,
+        messages: ['Internal server error'],
+      });
+    }
+  },
+  async getSong(req, res) {
+    try {
+      const {
+        id,
+      } = req.params;
+      const song = await Song.findOne({
+        where: {
+          id,
+        },
+      });
+      if (song) {
+        res.status(200).send({
+          error: false,
+          song: song.toJSON(),
+        });
+        return;
+      }
+      res.status(404).send({
+        error: true,
+        messages: ['No song found with the given id'],
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({
+        error: true,
+        messages: ['Internal server error'],
+      });
+    }
+  },
+  async editSong(req, res) {
+    try {
+      const {
+        id,
+      } = req.params;
+      if (req.body) {
+        const song = await Song.update(req.body, {
+          where: {
+            id,
+          },
+        });
+        if (song[0] === 1) {
+          res.status(200).send({
+            error: false,
+            song: req.body,
+          });
+          return;
+        }
+      }
+      res.status(404).send({
+        error: true,
+        messages: ['No song found with the given id'],
       });
     } catch (err) {
       console.error(err);

@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     navigateTo(route) {
-      this.$router.push(route);
+      this.$router.push(route, () => {});
     },
     logout() {
       this.$store.dispatch('setToken', null);
