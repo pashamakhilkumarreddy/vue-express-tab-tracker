@@ -10,7 +10,7 @@
           </v-text-field>
           <div class="err" v-html="error" />
           <br />
-          <v-btn dark class="cyan font-weight-bold" @click="register">
+          <v-btn dark class="cyan font-weight-bold" @click.prevent.enter="register">
             Register
           </v-btn>
         </form>
@@ -22,12 +22,10 @@
 </style>
 <script>
 import AuthenticationService from '@/services/AuthenticationService';
-import Panel from '@/components/Panel.vue';
 
 export default {
   name: 'Register',
   components: {
-    Panel,
   },
   metaInfo: {
     title: 'Register',
@@ -42,11 +40,16 @@ export default {
   methods: {
     async register() {
       try {
+        this.error = '';
         const response = await AuthenticationService.register({
           email: this.email,
           password: this.password,
         });
-        console.log(response.data);
+        if (!response.data.error) {
+          this.$router.push({
+            name: 'login',
+          });
+        }
       } catch (err) {
         console.error(err);
         const {

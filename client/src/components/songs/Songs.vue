@@ -72,10 +72,11 @@
 </style>
 <script>
 import SongsService from '@/services/SongsService';
-import Panel from '@/components/Panel.vue';
 
 export default {
   name: 'Songs',
+  components: {
+  },
   data() {
     return {
       songs: [],
@@ -96,9 +97,6 @@ export default {
     } catch (err) {
       console.error(err.response.data.error);
     }
-  },
-  components: {
-    Panel,
   },
 };
 </script>

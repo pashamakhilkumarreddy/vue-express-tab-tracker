@@ -19,7 +19,7 @@ module.exports = {
     try {
       const user = await User.create(req.body);
       if (user) {
-        res.status(200).send({
+        res.status(201).send({
           error: false,
           messages: [
             pickUserProps(user.toJSON()),

@@ -19,12 +19,9 @@ textarea {
 }
 </style>
 <script>
-import Panel from '@/components/Panel.vue';
-
 export default {
   name: 'SongLyrics',
   components: {
-    Panel,
   },
   data() {
     return {};

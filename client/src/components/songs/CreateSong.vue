@@ -45,10 +45,11 @@
 </style>
 <script>
 import SongsService from '@/services/SongsService';
-import Panel from '@/components/Panel.vue';
 
 export default {
   name: 'CreateSong',
+  components: {
+  },
   metaInfo: {
     title: 'Create a new Song',
   },
@@ -67,9 +68,6 @@ export default {
       error: null,
       required: (value) => !!value || 'Required',
     };
-  },
-  components: {
-    Panel,
   },
   methods: {
     async createSong() {

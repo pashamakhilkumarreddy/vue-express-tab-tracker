@@ -1,3 +1,5 @@
+const { Op } = require('sequelize');
+
 const {
   Song,
 } = require('../models');
@@ -18,15 +20,41 @@ module.exports = {
       });
     }
   },
+  // 'artist', 'genre', 'album',
   async getSongs(req, res) {
     try {
-      const songs = await Song.findAll({
-        limit: 10,
-      });
-      res.status(200).send({
-        error: false,
-        songs: JSON.stringify(songs),
-      });
+      let songs = null;
+      const { search } = req.query;
+      if (search) {
+        songs = await Song.findAll({
+          where: {
+            [Op.or]: [
+              {
+                title: {
+                  [Op.like]: `%${search}%`,
+                },
+                artist: {
+                  [Op.like]: `%${search}%`,
+                },
+                genre: {
+                  [Op.like]: `%${search}%`,
+                },
+                album: {
+                  [Op.like]: `%${search}%`,
+                },
+              },
+            ],
+          },
+        });
+      } else {
+        songs = await Song.findAll({
+          limit: 10,
+        });
+        res.status(200).send({
+          error: false,
+          songs: JSON.stringify(songs),
+        });
+      }
     } catch (err) {
       console.error(err);
       res.status(500).send({

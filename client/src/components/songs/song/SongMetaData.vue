@@ -14,11 +14,21 @@
               {{song.genre}}
             </div>
             <br />
-            <v-btn dark class="blue font-weight-bold" @click="navigateTo({
+            <v-btn dark class="blue font-weight-bold mr-4 mb-2" @click="navigateTo({
                 path: `/songs/${song.id}/edit`,
                 params: { songId: song.id }
               })">
               Edit Song
+            </v-btn>
+            <v-btn dark class="blue font-weight-bold mr-4 mb-2"
+              v-if="isUserLoggedIn && !bookmark"
+              @click="setBookmark">
+              Bookmark
+            </v-btn>
+            <v-btn dark class="blue font-weight-bold"
+              v-if="isUserLoggedIn && bookmark"
+              @click="unbookmark">
+              Unbookmark
             </v-btn>
           </v-flex>
           <v-flex xs6>
@@ -75,25 +85,65 @@ textarea {
 }
 </style>
 <script>
-import Panel from '@/components/Panel.vue';
+import { mapState } from 'vuex';
+import BookmarksService from '@/services/BookmarksService';
 
 export default {
   name: 'SongMetaData',
   components: {
-    Panel,
-  },
-  data() {
-    return {};
-  },
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route);
-    },
   },
   props: {
     song: {
       type: Object,
       required: true,
+    },
+  },
+  data() {
+    return {
+      bookmark: null,
+    };
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+    ]),
+  },
+  watch: {
+    async song() {
+      if (!this.isUserLoggedIn) {
+        return;
+      }
+      try {
+        this.bookmark = (await BookmarksService.getBookmarks({
+          songId: this.song.id,
+          userId: this.$store.state.user.id,
+        })).data.bookmark;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+  },
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    },
+    async setBookmark() {
+      try {
+        this.bookmark = (await BookmarksService.addBookmark({
+          songId: this.song.id,
+          userId: this.$store.state.user.id,
+        })).data.bookmark;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    async unbookmark() {
+      try {
+        await BookmarksService.deleteBookmark(this.bookmark.id);
+        this.bookmark = null;
+      } catch (err) {
+        console.error(err);
+      }
     },
   },
 };

@@ -5,6 +5,7 @@ import VueYouTubeEmbed from 'vue-youtube-embed';
 import { sync } from 'vuex-router-sync';
 
 import 'vuetify/dist/vuetify.min.css';
+import Panel from '@/components/globals/Panel.vue';
 import store from '@/store/store';
 import router from './router';
 import App from './App.vue';
@@ -12,6 +13,7 @@ import App from './App.vue';
 Vue.use(Vuetify);
 Vue.use(VueMeta);
 Vue.use(VueYouTubeEmbed);
+Vue.component('panel', Panel);
 
 sync(store, router);
 

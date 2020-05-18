@@ -14,12 +14,9 @@ iframe {
 }
 </style>
 <script>
-import Panel from '@/components/Panel.vue';
-
 export default {
   name: 'YouTube',
   components: {
-    Panel,
   },
   props: {
     url: {

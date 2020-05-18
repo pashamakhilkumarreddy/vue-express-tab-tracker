@@ -2,21 +2,23 @@
   <div id="app">
     <v-app>
       <app-header />
-      <Home />
+        <v-content>
+          <v-container fluid class="mb-14">
+            <router-view />
+          </v-container>
+        </v-content>
       <app-footer />
     </v-app>
   </div>
 </template>
 
 <script>
-import Home from '@/components/Home.vue';
 import Header from '@/components/common/Header.vue';
 import Footer from '@/components/common/Footer.vue';
 
 export default {
   name: 'App',
   components: {
-    Home,
     'app-header': Header,
     'app-footer': Footer,
   },

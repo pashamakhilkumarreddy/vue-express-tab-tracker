@@ -1,3 +1,5 @@
+const path = require('path');
+
 require('dotenv').config();
 
 module.exports = {
@@ -11,7 +13,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT,
       host: process.env.DB_HOST || 'localhost',
-      storage: './tabtracker.sqlite',
+      storage: path.resolve(__dirname, '../../tabtracker.sqlite'),
     },
   },
   jwt: {

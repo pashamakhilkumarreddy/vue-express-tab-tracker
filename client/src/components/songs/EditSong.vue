@@ -44,10 +44,11 @@
 </style>
 <script>
 import SongsService from '@/services/SongsService';
-import Panel from '@/components/Panel.vue';
 
 export default {
   name: 'EditSong',
+  components: {
+  },
   metaInfo: {
     title: 'Edit Song',
   },
@@ -66,9 +67,6 @@ export default {
       error: null,
       required: (value) => !!value || 'Required',
     };
-  },
-  components: {
-    Panel,
   },
   async mounted() {
     try {

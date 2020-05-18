@@ -1,9 +1,9 @@
 <template>
   <v-toolbar fixed class="blue darken-2" dark dense>
     <v-toolbar-title class="mr-4">
-      <span class="main-logo" @click="navigateTo({ name: 'home' })">
+      <router-link class="main-logo" tag="span" :to="{ name: 'home' }">
         Tab Tracker
-      </span>
+      </router-link>
     </v-toolbar-title>
 
     <v-toolbar-items>

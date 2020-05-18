@@ -10,7 +10,7 @@
           </v-text-field>
           <div class="err" v-html="error" />
           <br />
-          <v-btn dark class="cyan font-weight-bold" @click="login">
+          <v-btn dark class="cyan font-weight-bold" @click.enter.prevent="login">
             Login
           </v-btn>
         </form>
@@ -22,12 +22,10 @@
 </style>
 <script>
 import AuthenticationService from '@/services/AuthenticationService';
-import Panel from '@/components/Panel.vue';
 
 export default {
   name: 'Login',
   components: {
-    Panel,
   },
   metaInfo: {
     title: 'Login',
@@ -36,12 +34,13 @@ export default {
     return {
       email: '',
       password: '',
-      error: '',
+      error: null,
     };
   },
   methods: {
     async login() {
       try {
+        this.error = '';
         const response = await AuthenticationService.login({
           email: this.email,
           password: this.password,
@@ -49,7 +48,7 @@ export default {
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.user);
         this.$router.push({
-          name: 'login',
+          name: 'songs',
         });
       } catch (err) {
         console.error(err);
