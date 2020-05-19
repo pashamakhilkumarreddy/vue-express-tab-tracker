@@ -3,7 +3,7 @@
     <template v-slot:panel-content>
       <v-data-table
         :headers="headers"
-        :options.sync="pagination"
+        :options.sync="options"
         :items="bookmarks"
         :items-per-page="5"
         class="elevation-3"
@@ -46,15 +46,9 @@ export default {
           sortable: true,
           align: 'start',
         },
-        {
-          text: '',
-          value: '',
-          sortable: true,
-          align: 'start',
-        },
       ],
-      pagination: {
-        // sortBy: 'date',
+      options: {
+        sortBy: ['createdAt'],
         descending: true,
       },
       bookmarks: [],

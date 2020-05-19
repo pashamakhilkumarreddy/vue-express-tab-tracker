@@ -16,7 +16,7 @@ export default {
       },
     });
   },
-  deleteBookmark(bookmarkId) {
-    return Api().delete(`bookmarks/${bookmarkId}`);
+  deleteBookmark({ bookmarkId, userId }) {
+    return Api().delete(`bookmarks/${bookmarkId}`, userId);
   },
 };

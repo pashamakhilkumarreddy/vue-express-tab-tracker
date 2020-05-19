@@ -106,6 +106,7 @@ export default {
   computed: {
     ...mapState([
       'isUserLoggedIn',
+      'user',
     ]),
   },
   watch: {
@@ -142,7 +143,10 @@ export default {
     },
     async unbookmark() {
       try {
-        await BookmarksService.deleteBookmark(this.bookmark.id);
+        await BookmarksService.deleteBookmark({
+          bookmarkId: this.bookmark.id,
+          userId: this.user.id,
+        });
         this.bookmark = null;
       } catch (err) {
         console.error(err);

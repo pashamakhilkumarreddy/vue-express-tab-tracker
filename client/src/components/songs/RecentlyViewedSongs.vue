@@ -3,8 +3,8 @@
     <template v-slot:panel-content>
       <v-data-table
         :headers="headers"
-        :options.sync="pagination"
-        :items="bookmarks"
+        :options.sync="options"
+        :items="histories"
         :items-per-page="5"
         class="elevation-3"
         item-key="item"
@@ -46,18 +46,12 @@ export default {
           sortable: true,
           align: 'start',
         },
-        {
-          text: '',
-          value: '',
-          sortable: true,
-          align: 'start',
-        },
       ],
-      pagination: {
-        // sortBy: 'date',
+      options: {
+        sortBy: ['createdAt'],
         descending: true,
       },
-      bookmarks: [],
+      histories: [],
     };
   },
   computed: {
@@ -69,9 +63,9 @@ export default {
   async mounted() {
     try {
       if (this.isUserLoggedIn) {
-        this.bookmarks = (await SongsHistoryService.getRecentlyViewedSongs({
+        this.histories = (await SongsHistoryService.getRecentlyViewedSongs({
           userId: this.user.id,
-        })).data;
+        })).data.histories;
       }
     } catch (err) {
       console.error(err);

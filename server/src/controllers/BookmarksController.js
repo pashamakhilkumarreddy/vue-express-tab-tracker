@@ -78,7 +78,7 @@ module.exports = {
   },
   async deleteBookmark(req, res) {
     try {
-      const userId = req.user.id;
+      const { userId } = req.body;
       const {
         id: bookmarkId,
       } = req.params;
