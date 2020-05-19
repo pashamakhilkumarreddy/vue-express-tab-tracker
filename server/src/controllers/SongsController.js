@@ -10,7 +10,7 @@ module.exports = {
   async addSong(req, res) {
     try {
       const song = await Song.create(req.body);
-      res.status(200).send({
+      res.status(201).send({
         error: false,
         song: song.toJSON(),
       });
