@@ -1,10 +1,8 @@
 import Api from './Api';
 
 export default {
-  getRecentlyViewedSongs(params) {
-    return Api().get('history', {
-      params,
-    });
+  getRecentlyViewedSongs() {
+    return Api().get('history');
   },
   setRecentlyViewedSong(history) {
     return Api().post('history', history);

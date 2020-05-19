@@ -1,11 +1,10 @@
 import Api from './Api';
 
 export default {
-  getBookmarks({ songId, userId }) {
+  getBookmarks({ songId = null } = { songId: null }) {
     return Api().get('bookmarks', {
       params: {
         songId,
-        userId,
       },
     });
   },
@@ -16,7 +15,7 @@ export default {
       },
     });
   },
-  deleteBookmark({ bookmarkId, userId }) {
-    return Api().delete(`bookmarks/${bookmarkId}`, userId);
+  deleteBookmark({ bookmarkId }) {
+    return Api().delete(`bookmarks/${bookmarkId}`);
   },
 };

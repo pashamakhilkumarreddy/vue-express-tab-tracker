@@ -25,8 +25,6 @@ import AuthenticationService from '@/services/AuthenticationService';
 
 export default {
   name: 'Register',
-  components: {
-  },
   metaInfo: {
     title: 'Register',
   },

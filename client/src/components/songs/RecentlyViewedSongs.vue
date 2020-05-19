@@ -63,9 +63,7 @@ export default {
   async mounted() {
     try {
       if (this.isUserLoggedIn) {
-        this.histories = (await SongsHistoryService.getRecentlyViewedSongs({
-          userId: this.user.id,
-        })).data.histories;
+        this.histories = (await SongsHistoryService.getRecentlyViewedSongs()).data.histories;
       }
     } catch (err) {
       console.error(err);

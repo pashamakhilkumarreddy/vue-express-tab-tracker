@@ -10,10 +10,12 @@ module.exports = {
     try {
       const {
         songId,
-        userId,
       } = req.query;
+      const {
+        id: UserId,
+      } = req.user;
       const whereCondition = {
-        UserId: userId,
+        UserId,
       };
       if (songId) {
         whereCondition.SongId = songId;
@@ -25,6 +27,7 @@ module.exports = {
         }],
       }).map((bookmark) => bookmark.toJSON())
         .map((bookmark) => _.extend({}, bookmark.Song, bookmark));
+      console.log(songId, bookmarks);
       res.status(200).send({
         error: false,
         bookmarks: bookmarks || false,
@@ -43,12 +46,14 @@ module.exports = {
     try {
       const {
         songId,
-        userId,
       } = req.body.params;
+      const {
+        id: UserId,
+      } = req.user;
       const bookmark = await Bookmark.findOne({
         where: {
           SongId: songId,
-          UserId: userId,
+          UserId,
         },
       });
       if (bookmark) {
@@ -62,7 +67,7 @@ module.exports = {
       }
       const newBookmark = await Bookmark.create({
         SongId: songId,
-        UserId: userId,
+        UserId,
       });
       res.status(201).send({
         error: false,
@@ -78,14 +83,16 @@ module.exports = {
   },
   async deleteBookmark(req, res) {
     try {
-      const { userId } = req.body;
+      const {
+        id: UserId,
+      } = req.user;
       const {
         id: bookmarkId,
       } = req.params;
-      const bookmark = await Bookmark.findByOne({
+      const bookmark = await Bookmark.findOne({
         where: {
           id: bookmarkId,
-          UserId: userId,
+          UserId,
         },
       });
       if (!bookmark) {

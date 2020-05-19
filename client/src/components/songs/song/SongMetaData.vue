@@ -117,10 +117,9 @@ export default {
       try {
         const { bookmarks } = (await BookmarksService.getBookmarks({
           songId: this.song.id,
-          userId: this.$store.state.user.id,
         })).data;
         if (bookmarks.length) {
-          this.bookmarks = bookmarks;
+          [this.bookmark] = bookmarks;
         }
       } catch (err) {
         console.error(err);
@@ -135,7 +134,6 @@ export default {
       try {
         this.bookmark = (await BookmarksService.addBookmark({
           songId: this.song.id,
-          userId: this.$store.state.user.id,
         })).data.bookmark;
       } catch (err) {
         console.error(err);
@@ -145,7 +143,6 @@ export default {
       try {
         await BookmarksService.deleteBookmark({
           bookmarkId: this.bookmark.id,
-          userId: this.user.id,
         });
         this.bookmark = null;
       } catch (err) {

@@ -21,8 +21,6 @@ textarea {
 <script>
 export default {
   name: 'SongLyrics',
-  components: {
-  },
   data() {
     return {};
   },

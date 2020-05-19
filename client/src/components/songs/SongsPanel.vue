@@ -41,7 +41,6 @@
 <style scoped>
 .song {
   padding: 1.25rem;
-  height: 19rem;
   overflow: hidden;
   border: 2px solid #90caf9;
   margin: 0 0 1rem 0;
@@ -73,8 +72,6 @@ import SongsService from '@/services/SongsService';
 
 export default {
   name: 'SongsPanel',
-  components: {
-  },
   data() {
     return {
       songs: [],

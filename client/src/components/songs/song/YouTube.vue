@@ -16,8 +16,6 @@ iframe {
 <script>
 export default {
   name: 'YouTube',
-  components: {
-  },
   props: {
     url: {
       type: String,

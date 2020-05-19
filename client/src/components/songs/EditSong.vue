@@ -47,8 +47,6 @@ import SongsService from '@/services/SongsService';
 
 export default {
   name: 'EditSong',
-  components: {
-  },
   metaInfo: {
     title: 'Edit Song',
   },

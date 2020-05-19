@@ -21,8 +21,6 @@ textarea {
 <script>
 export default {
   name: 'Tab',
-  components: {
-  },
   data() {
     return {};
   },

@@ -8,7 +8,7 @@ const {
 module.exports = {
   async getRecentlyViewedSongs(req, res) {
     try {
-      const { userId } = req.query;
+      const { id: userId } = req.user;
       const histories = await History.findAll({
         where: {
           UserId: userId,
@@ -37,7 +37,8 @@ module.exports = {
   },
   async setSongAsRecentlyViewed(req, res) {
     try {
-      const { userId, songId } = req.body;
+      const { id: userId } = req.user;
+      const { songId } = req.body;
       const history = await History.create({
         SongId: songId,
         UserId: userId,

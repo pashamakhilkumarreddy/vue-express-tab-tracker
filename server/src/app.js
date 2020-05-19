@@ -24,10 +24,12 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
+require('./passport');
+
 require('./routes')(app);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    console.log(`The server is running on ${PORT}`);
+    console.info(`The server is running on ${PORT}`);
   });
 });

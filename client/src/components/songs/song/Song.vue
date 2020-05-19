@@ -61,7 +61,6 @@ export default {
   computed: {
     ...mapState([
       'isUserLoggedIn',
-      'user',
     ]),
   },
   async mounted() {
@@ -72,7 +71,6 @@ export default {
       if (this.isUserLoggedIn) {
         SongsHistoryService.setRecentlyViewedSong({
           songId,
-          userId: this.user.id,
         });
       }
     } catch (err) {

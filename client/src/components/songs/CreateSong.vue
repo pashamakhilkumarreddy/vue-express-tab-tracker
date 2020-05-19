@@ -48,8 +48,6 @@ import SongsService from '@/services/SongsService';
 
 export default {
   name: 'CreateSong',
-  components: {
-  },
   metaInfo: {
     title: 'Create a new Song',
   },

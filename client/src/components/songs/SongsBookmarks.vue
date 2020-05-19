@@ -57,15 +57,12 @@ export default {
   computed: {
     ...mapState([
       'isUserLoggedIn',
-      'user',
     ]),
   },
   async mounted() {
     try {
       if (this.isUserLoggedIn) {
-        this.bookmarks = (await BookmarksService.getBookmarks({
-          userId: this.user.id,
-        })).data.bookmarks;
+        this.bookmarks = (await BookmarksService.getBookmarks()).data.bookmarks;
       }
     } catch (err) {
       console.error(err);

@@ -2,7 +2,7 @@ const passport = require('passport');
 
 module.exports = function (req, res, next) {
   passport.authenticate('jwt', (err, user) => {
-    if (err) {
+    if (err || !user) {
       res.status(403).send({
         error: false,
         messages: [
