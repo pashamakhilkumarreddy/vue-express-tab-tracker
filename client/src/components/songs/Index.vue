@@ -1,22 +1,32 @@
 <template>
-  <v-flex xs8 class="m-auto">
-    <songs-search-panel />
-    <songs-panel />
-  </v-flex>
+  <v-layout>
+    <v-flex xs12 sm5>
+      <songs-bookmarks />
+      <recently-viewed-songs />
+    </v-flex>
+    <v-flex xs12 sm7 class="m-auto ml-4">
+      <songs-search-panel />
+      <songs-panel />
+    </v-flex>
+  </v-layout>
 </template>
 <style scoped>
 
 </style>
 <script>
 import SongsService from '@/services/SongsService';
+import SongsBookmarks from './SongsBookmarks.vue';
 import SongsPanel from './SongsPanel.vue';
 import SongsSearchPanel from './SongsSearchPanel.vue';
+import RecentlyViewedSongs from './RecentlyViewedSongs.vue';
 
 export default {
   name: 'Index',
   components: {
     SongsPanel,
     SongsSearchPanel,
+    SongsBookmarks,
+    RecentlyViewedSongs,
   },
   data() {
     return {

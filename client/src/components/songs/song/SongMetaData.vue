@@ -114,10 +114,13 @@ export default {
         return;
       }
       try {
-        this.bookmark = (await BookmarksService.getBookmarks({
+        const { bookmarks } = (await BookmarksService.getBookmarks({
           songId: this.song.id,
           userId: this.$store.state.user.id,
-        })).data.bookmark;
+        })).data;
+        if (bookmarks.length) {
+          this.bookmarks = bookmarks;
+        }
       } catch (err) {
         console.error(err);
       }

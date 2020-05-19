@@ -5,17 +5,15 @@ const {
   Song,
   User,
   Bookmark,
+  History,
 } = require('../src/models');
 
 const {
-  songs
-} = require('./songs');
-const {
-  users
-} = require('./users');
-const {
-  bookmarks
-} = require('./bookmarks');
+  songs,
+  users,
+  bookmarks,
+  histories
+} = require('./data');
 
 sequelize.sync({
     force: true,
@@ -38,6 +36,12 @@ sequelize.sync({
         await Bookmark.create(bookmark);
       })
     );
+
+    await Promise.all(
+      histories.map(async (history) => {
+        await History.create(history);
+      })
+    )
   }).catch(err => {
     console.error(err);
   });

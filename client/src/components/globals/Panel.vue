@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" class="mt-12">
+  <v-row justify="center" class="mt-6">
     <v-col xs10>
       <v-card raised class="text-center">
         <v-card-title class="justify-center blue darken-2">

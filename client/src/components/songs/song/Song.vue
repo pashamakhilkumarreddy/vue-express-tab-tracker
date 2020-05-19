@@ -33,7 +33,10 @@ textarea {
 }
 </style>
 <script>
+import { mapState } from 'vuex';
+
 import SongsService from '@/services/SongsService';
+import SongsHistoryService from '@/services/SongsHistoryService';
 import SongMetaData from '@/components/songs/song/SongMetaData.vue';
 import YouTube from './YouTube.vue';
 import Lyrics from './Lyrics.vue';
@@ -55,11 +58,23 @@ export default {
       song: {},
     };
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user',
+    ]),
+  },
   async mounted() {
     try {
       const { songId } = this.$store.state.route.params;
       const { song } = (await SongsService.getSong(songId)).data;
       this.song = song;
+      if (this.isUserLoggedIn) {
+        SongsHistoryService.setRecentlyViewedSong({
+          songId,
+          userId: this.user.id,
+        });
+      }
     } catch (err) {
       console.error(err);
     }

@@ -6,6 +6,9 @@
   </v-footer>
 </template>
 <style scoped>
+.footer {
+  border-top: 1px solid #ddd;
+}
 </style>
 <script>
 export default {
