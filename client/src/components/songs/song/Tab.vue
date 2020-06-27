@@ -21,9 +21,6 @@ textarea {
 <script>
 export default {
   name: 'Tab',
-  data() {
-    return {};
-  },
   props: {
     tab: {
       type: String,

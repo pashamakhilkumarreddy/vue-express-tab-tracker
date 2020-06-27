@@ -90,8 +90,6 @@ import BookmarksService from '@/services/BookmarksService';
 
 export default {
   name: 'SongMetaData',
-  components: {
-  },
   props: {
     song: {
       type: Object,

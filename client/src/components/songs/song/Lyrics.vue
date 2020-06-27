@@ -21,9 +21,6 @@ textarea {
 <script>
 export default {
   name: 'SongLyrics',
-  data() {
-    return {};
-  },
   props: {
     lyrics: {
       type: String,

@@ -2,11 +2,11 @@
   <div id="app">
     <v-app>
       <app-header />
-        <v-content>
+        <v-main>
           <v-container fluid class="mb-14">
             <router-view />
           </v-container>
-        </v-content>
+        </v-main>
       <app-footer />
     </v-app>
   </div>

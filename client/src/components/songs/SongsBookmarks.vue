@@ -11,7 +11,7 @@
         :locale="'en-US'">
         <template v-slot:body="{ items }">
           <tr v-for="item in items" :key="item.name">
-            <td class="text-left">
+            <td class="text-left pl-4">
               {{item.title}}
             </td>
             <td class="text-left">

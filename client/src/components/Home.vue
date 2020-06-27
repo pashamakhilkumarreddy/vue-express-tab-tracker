@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container fluid class="mb-14">
       <v-layout align-content-center justify-center>
         <v-flex 10 align-self-center>
@@ -7,15 +7,15 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 <style scoped>
 </style>
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {};
+  metaInfo: {
+    title: 'Home',
   },
 };
 </script>

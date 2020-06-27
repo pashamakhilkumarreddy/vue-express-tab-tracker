@@ -26,8 +26,5 @@ export default {
       default: 'Hello',
     },
   },
-  data() {
-    return {};
-  },
 };
 </script>
