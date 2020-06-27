@@ -49,7 +49,7 @@ import SongsService from '@/services/SongsService';
 export default {
   name: 'CreateSong',
   metaInfo: {
-    title: 'Create a new Song',
+    title: 'Create a new song',
   },
   data() {
     return {

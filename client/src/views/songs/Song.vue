@@ -38,9 +38,9 @@ import { mapState } from 'vuex';
 import SongsService from '@/services/SongsService';
 import SongsHistoryService from '@/services/SongsHistoryService';
 import SongMetaData from '@/components/songs/song/SongMetaData.vue';
-import YouTube from './YouTube.vue';
-import Lyrics from './Lyrics.vue';
-import Tab from './Tab.vue';
+import YouTube from '@/components/songs/song/YouTube.vue';
+import Lyrics from '@/components/songs/song/Lyrics.vue';
+import Tab from '@/components/songs/song/Tab.vue';
 
 export default {
   name: 'Song',

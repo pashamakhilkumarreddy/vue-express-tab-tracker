@@ -18,10 +18,10 @@
 <script>
 import { mapState } from 'vuex';
 import SongsService from '@/services/SongsService';
-import SongsBookmarks from './SongsBookmarks.vue';
-import SongsPanel from './SongsPanel.vue';
-import SongsSearchPanel from './SongsSearchPanel.vue';
-import RecentlyViewedSongs from './RecentlyViewedSongs.vue';
+import SongsBookmarks from '@/components/songs/SongsBookmarks.vue';
+import SongsPanel from '@/components/songs/SongsPanel.vue';
+import SongsSearchPanel from '@/components/songs/SongsSearchPanel.vue';
+import RecentlyViewedSongs from '@/components/songs/RecentlyViewedSongs.vue';
 
 export default {
   name: 'Index',

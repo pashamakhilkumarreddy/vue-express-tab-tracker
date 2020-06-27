@@ -1,6 +1,6 @@
 <template>
   <v-flex xs6 class="m-auto">
-    <panel title="Login">
+    <panel title="Register">
       <template v-slot:panel-content>
         <form name="tab-tracker-form" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
@@ -10,23 +10,21 @@
           </v-text-field>
           <div class="err" v-html="error" />
           <br />
-          <v-btn dark class="cyan font-weight-bold" @click.enter.prevent="login">
-            Login
+          <v-btn dark class="cyan font-weight-bold" @click.prevent.enter="register">
+            Register
           </v-btn>
         </form>
       </template>
     </panel>
   </v-flex>
 </template>
-<style scoped>
-</style>
 <script>
 import AuthenticationService from '@/services/AuthenticationService';
 
 export default {
-  name: 'Login',
+  name: 'Register',
   metaInfo: {
-    title: 'Login',
+    title: 'Register',
   },
   data() {
     return {
@@ -36,18 +34,20 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async register() {
       try {
         this.error = '';
-        const response = await AuthenticationService.login({
-          email: this.email,
-          password: this.password,
-        });
-        this.$store.dispatch('setToken', response.data.token);
-        this.$store.dispatch('setUser', response.data.user);
-        this.$router.push({
-          name: 'songs',
-        });
+        if (this.email.trim() && this.password.trim()) {
+          const response = await AuthenticationService.register({
+            email: this.email,
+            password: this.password,
+          });
+          if (!response.data.error) {
+            this.$router.push({
+              name: 'login',
+            });
+          }
+        }
       } catch (err) {
         console.error(err);
         const {
@@ -59,4 +59,5 @@ export default {
     },
   },
 };
+
 </script>

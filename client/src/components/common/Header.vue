@@ -17,7 +17,7 @@
     <v-toolbar-items>
       <v-btn text depressed @click="navigateTo({ name: 'login' })"
         v-if="!$store.state.isUserLoggedIn">
-        Login
+        Log In
       </v-btn>
 
       <v-btn text depressed @click="navigateTo({ name: 'register' })"
