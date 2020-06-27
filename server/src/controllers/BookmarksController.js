@@ -27,7 +27,6 @@ module.exports = {
         }],
       }).map((bookmark) => bookmark.toJSON())
         .map((bookmark) => _.extend({}, bookmark.Song, bookmark));
-      console.log(songId, bookmarks);
       res.status(200).send({
         error: false,
         bookmarks: bookmarks || false,

@@ -1,6 +1,6 @@
 const users = [{
   'email': 'test@test.com',
-  'password': 'testTest'
+  'password': 'TuqJxwY93cC9Fai'
 }];
 
 module.exports = {

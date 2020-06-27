@@ -8,16 +8,16 @@ const {
 module.exports = {
   async getRecentlyViewedSongs(req, res) {
     try {
-      const { id: userId } = req.user;
+      const {
+        id: userId,
+      } = req.user;
       const histories = await History.findAll({
         where: {
           UserId: userId,
         },
-        include: [
-          {
-            model: Song,
-          },
-        ],
+        include: [{
+          model: Song,
+        }],
       }).map((history) => history.toJSON())
         .map((history) => _.extend({},
           history.Song, history));
@@ -37,8 +37,12 @@ module.exports = {
   },
   async setSongAsRecentlyViewed(req, res) {
     try {
-      const { id: userId } = req.user;
-      const { songId } = req.body;
+      const {
+        id: userId,
+      } = req.user;
+      const {
+        songId,
+      } = req.body;
       const history = await History.create({
         SongId: songId,
         UserId: userId,
