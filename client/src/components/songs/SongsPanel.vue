@@ -1,14 +1,12 @@
 <template>
   <panel title="Songs">
     <template v-slot:panel-content>
-      <!-- <router-link :to="{name: 'create-song'}"> -->
       <v-btn class="blue darken-1 accent-2 mb-4" @click="navigateTo({ name: 'create-song' })" fab
         light medium absolute right top middle>
         <v-icon>
           add
         </v-icon>
       </v-btn>
-      <!-- </router-link> -->
 
       <div class="song" v-for="song in songs" :key="song.id.toString()">
         <v-layout>

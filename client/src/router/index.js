@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import store from '@/store';
+
 import Register from '@/views/auth/Register.vue';
 import Login from '@/views/auth/Login.vue';
 import CreateSong from '@/views/songs/CreateSong.vue';
@@ -9,6 +11,8 @@ import Index from '@/views/songs/Index.vue';
 import Song from '@/views/songs/Song.vue';
 
 const Home = () => import('@/views/Home.vue');
+
+const PageNotFound = () => import('@/components/errors/PageNotFound.vue');
 
 Vue.use(VueRouter);
 
@@ -19,6 +23,7 @@ export default new VueRouter({
     path: '/',
     name: 'home',
     component: Home,
+    alias: ['/home', '/index'],
   },
   {
     path: '/register',
@@ -34,6 +39,19 @@ export default new VueRouter({
     path: '/songs/create',
     name: 'create-song',
     component: CreateSong,
+    beforeEnter(to, from, next) {
+      const {
+        isUserLoggedIn,
+        token,
+      } = store.state;
+      if (isUserLoggedIn && token) {
+        next();
+      } else {
+        next({
+          name: 'login',
+        });
+      }
+    },
   },
   {
     path: '/songs',
@@ -49,10 +67,24 @@ export default new VueRouter({
     path: '/songs/:songId/edit',
     name: 'edit-song',
     component: EditSong,
+    beforeEnter(to, from, next) {
+      const {
+        isUserLoggedIn,
+        token,
+      } = store.state;
+      if (isUserLoggedIn && token) {
+        next();
+      } else {
+        next({
+          name: 'login',
+        });
+      }
+    },
   },
   {
     path: '*',
-    redirect: 'songs',
+    name: 'not-found',
+    component: PageNotFound,
   },
   ],
 });

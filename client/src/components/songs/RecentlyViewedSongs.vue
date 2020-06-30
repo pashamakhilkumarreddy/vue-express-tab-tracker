@@ -1,14 +1,8 @@
 <template>
   <panel title="Recently Viewed Songs">
     <template v-slot:panel-content>
-      <v-data-table
-        :headers="headers"
-        :options.sync="options"
-        :items="histories"
-        :items-per-page="5"
-        class="elevation-3"
-        item-key="item"
-        :locale="'en-US'">
+      <v-data-table :headers="headers" :options.sync="options" :items="histories"
+        :items-per-page="5" class="elevation-3" item-key="item" :locale="'en-US'">
         <template v-slot:body="{ items }">
           <tr v-for="item in items" :key="item.name">
             <td class="text-left pl-4">
@@ -23,8 +17,6 @@
     </template>
   </panel>
 </template>
-<style scoped>
-</style>
 <script>
 import { mapState } from 'vuex';
 import SongsHistoryService from '@/services/SongsHistoryService';

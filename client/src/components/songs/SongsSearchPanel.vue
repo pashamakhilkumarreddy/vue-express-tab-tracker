@@ -1,14 +1,12 @@
 <template>
   <panel title="Search">
     <template v-slot:panel-content>
-      <v-text-field label="Search by song title, artist, album or genre"
-      type="text" v-model="search">
+      <v-text-field label="Search by song title, artist, album or genre" type="text"
+        v-model="search">
       </v-text-field>
     </template>
   </panel>
 </template>
-<style scoped>
-</style>
 <script>
 import _ from 'lodash';
 

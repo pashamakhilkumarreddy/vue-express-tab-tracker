@@ -2,16 +2,15 @@
   <div id="app">
     <v-app>
       <app-header />
-        <v-main>
-          <v-container fluid class="mb-14">
-            <router-view />
-          </v-container>
-        </v-main>
+      <v-main>
+        <v-container fluid class="mb-14">
+          <router-view />
+        </v-container>
+      </v-main>
       <app-footer />
     </v-app>
   </div>
 </template>
-
 <script>
 import Header from '@/components/common/Header.vue';
 import Footer from '@/components/common/Footer.vue';
@@ -30,7 +29,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .mb-14 {
   margin-bottom: 7rem;

@@ -3,7 +3,7 @@
     <v-container fluid class="mb-14">
       <v-layout align-content-center justify-center>
         <v-flex 10 align-self-center>
-          <h1 class="text-center mt-12 text-h2">Welcome to Tab Tracker</h1>
+          <h1 class="text-center mt-12 text-h2 font-weight-bold">Welcome to Tab Tracker</h1>
         </v-flex>
       </v-layout>
     </v-container>

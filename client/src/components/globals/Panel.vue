@@ -15,8 +15,6 @@
     </v-col>
   </v-row>
 </template>
-<style scoped>
-</style>
 <script>
 export default {
   name: 'Panel',

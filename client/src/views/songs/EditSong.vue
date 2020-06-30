@@ -23,25 +23,20 @@
         <template v-slot:panel-content>
           <v-textarea name="lyrics" label="Lyrics" value="" v-model="song.lyrics"
             :rules="[required]"></v-textarea>
-          <v-textarea name="tab" label="Tab" value="" v-model="song.tab"
-            :rules="[required]"></v-textarea>
-            <div class="submit-error err" v-if="error">
-              {{error}}
-            </div>
-            <br />
-            <v-btn dark class="blue font-weight-bold" @click="editSong">
-              Edit Song
-            </v-btn>
+          <v-textarea name="tab" label="Tab" value="" v-model="song.tab" :rules="[required]">
+          </v-textarea>
+          <div class="submit-error err" v-if="error">
+            {{error}}
+          </div>
+          <br />
+          <v-btn dark class="blue font-weight-bold" @click="editSong">
+            Edit Song
+          </v-btn>
         </template>
       </panel>
     </v-flex>
   </v-layout>
 </template>
-<style scoped>
-.mb-20 {
-  margin-bottom: 10rem;
-}
-</style>
 <script>
 import SongsService from '@/services/SongsService';
 

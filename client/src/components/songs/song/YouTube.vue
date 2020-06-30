@@ -1,9 +1,7 @@
 <template>
   <panel title="Youtube Video">
     <template v-slot:panel-content v-if="url">
-      <youtube :video-id="url"
-      player-width="95%"
-      :player-height="410">
+      <youtube :video-id="url" player-width="95%" :player-height="410">
       </youtube>
     </template>
   </panel>

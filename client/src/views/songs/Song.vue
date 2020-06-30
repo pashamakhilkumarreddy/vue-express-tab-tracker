@@ -11,11 +11,11 @@
     </v-layout>
     <v-layout>
       <v-flex xs6 class="mr-3">
-        <tab :tab="song.tab"  v-if="song.tab" />
+        <tab :tab="song.tab" v-if="song.tab" />
       </v-flex>
 
       <v-flex xs6>
-        <lyrics :lyrics="song.lyrics"  v-if="song.lyrics" />
+        <lyrics :lyrics="song.lyrics" v-if="song.lyrics" />
       </v-flex>
     </v-layout>
   </div>

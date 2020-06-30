@@ -2,18 +2,30 @@
   <v-flex xs6 class="m-auto">
     <panel title="Login">
       <template v-slot:panel-content>
-        <form name="tab-tracker-form" autocomplete="off">
-          <v-text-field label="Email" v-model="email"></v-text-field>
-          <br>
-          <v-text-field label="Password" type="password" v-model="password"
-            autocomplete="new-password">
-          </v-text-field>
-          <div class="err" v-html="error" />
-          <br />
-          <v-btn dark class="cyan font-weight-bold" @click.prevent="login">
-            Login
-          </v-btn>
-        </form>
+        <ValidationObserver v-slot="{ handleSubmit, invalid }">
+          <form class="auth-form" name="tab-tracker-form" autocomplete="off">
+            <ValidationProvider name="Email" rules="required|email|minmax:6,90" :bails="true"
+              v-slot="{ errors }">
+              <v-text-field label="Email" type="email" v-model="email" :error-messages="errors"
+                required></v-text-field>
+            </ValidationProvider>
+            <br />
+            <ValidationProvider name="Password" rules="required|password|minmax:8,36" :bails="true"
+              v-slot="{ errors }">
+              <v-text-field label="Password" type="password" v-model="password"
+                :error-messages="errors" autocomplete="new-password" required>
+              </v-text-field>
+            </ValidationProvider>
+            <div class="err" v-html="error" />
+            <br />
+            <v-btn class="cyan font-weight-bold white--text" :disabled="invalid"
+              @click.prevent="handleSubmit(login)">
+              <span class="text-h6">
+                Log In
+              </span>
+            </v-btn>
+          </form>
+        </ValidationObserver>
       </template>
     </panel>
   </v-flex>
@@ -42,6 +54,7 @@ export default {
             email: this.email,
             password: this.password,
           });
+          console.log(response);
           this.$store.dispatch('setToken', response.data.token);
           this.$store.dispatch('setUser', response.data.user);
           this.$router.push({

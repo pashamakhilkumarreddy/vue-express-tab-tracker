@@ -32,6 +32,7 @@ require('./routes')(app);
 sequelize.sync({
   force: false,
 }).then(() => {
+  console.info('Successfully connected to the database');
   app.listen(PORT, () => {
     console.info(`The server is up and running on ${PORT}`);
   });

@@ -4,7 +4,7 @@ module.exports = {
   register(req, res, next) {
     const schema = Joi.object({
       email: Joi.string().email(),
-      password: Joi.string().regex(new RegExp('^[a-zA-Z0-9]{8,32}$')),
+      password: Joi.string().regex(new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)), // eslint-disable-line no-useless-escape
     });
     const {
       error,

@@ -21,8 +21,8 @@
       </v-btn>
 
       <v-btn text depressed @click="navigateTo({ name: 'register' })"
-       v-if="!$store.state.isUserLoggedIn">
-        Sign Up
+        v-if="!$store.state.isUserLoggedIn">
+        Register
       </v-btn>
 
       <v-btn text depressed v-if="$store.state.isUserLoggedIn" @click="logout">
@@ -43,9 +43,6 @@ button {
 <script>
 export default {
   name: 'Header',
-  data() {
-    return {};
-  },
   methods: {
     navigateTo(route) {
       this.$router.push(route, () => {});

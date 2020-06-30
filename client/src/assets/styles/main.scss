@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fonts/Nunito/Nunito-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoItalic';
+  src: url('../fonts/Nunito/Nunito-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoBold';
+  src: url('../fonts/Nunito/Nunito-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSemiBold';
+  src: url('../fonts/Nunito/Nunito-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSemiBoldItalic';
+  src: url('../fonts/Nunito/Nunito-SemiBoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoBoldItalic';
+  src: url('../fonts/Nunito/Nunito-BoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoBlack';
+  src: url('../fonts/Nunito/Nunito-Black.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoBlackItalic';
+  src: url('../fonts/Nunito/Nunito-BlackItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoExtraBold';
+  src: url('../fonts/Nunito/Nunito-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoExtraBoldItalic';
+  src: url('../fonts/Nunito/Nunito-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoExtraLight';
+  src: url('../fonts/Nunito/Nunito-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoExtraLightItalic';
+  src: url('../fonts/Nunito/Nunito-ExtraLightItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoLight';
+  src: url('../fonts/Nunito/Nunito-Light.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoLightItalic';
+  src: url('../fonts/Nunito/Nunito-LightItalic.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px !important;
+  font-family: 'Nunito' !important;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.auth-form .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: #00bcd4 !important;
+}
+
+.mb-20 {
+  margin-bottom: 10rem;
+}

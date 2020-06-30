@@ -20,13 +20,11 @@
               })">
               Edit Song
             </v-btn>
-            <v-btn dark class="blue font-weight-bold mr-4 mb-2"
-              v-if="isUserLoggedIn && !bookmark"
+            <v-btn dark class="blue font-weight-bold mr-4 mb-2" v-if="isUserLoggedIn && !bookmark"
               @click="setBookmark">
               Bookmark
             </v-btn>
-            <v-btn dark class="blue font-weight-bold"
-              v-if="isUserLoggedIn && bookmark"
+            <v-btn dark class="blue font-weight-bold" v-if="isUserLoggedIn && bookmark"
               @click="unbookmark">
               Unbookmark
             </v-btn>

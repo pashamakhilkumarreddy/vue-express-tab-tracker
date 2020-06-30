@@ -13,8 +13,6 @@
     </v-flex>
   </v-layout>
 </template>
-<style scoped>
-</style>
 <script>
 import { mapState } from 'vuex';
 import SongsService from '@/services/SongsService';
