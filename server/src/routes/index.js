@@ -3,7 +3,7 @@ const songs = require('./songs');
 const bookmarks = require('./bookmarks');
 const history = require('./history');
 
-module.exports = (app) => {
+module.exports = ({ app }) => {
   app.use('/', auth);
   app.use('/', songs);
   app.use('/', bookmarks);
