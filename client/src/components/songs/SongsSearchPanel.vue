@@ -18,7 +18,7 @@ export default {
     };
   },
   watch: {
-    search: _.debounce(async function (value) {
+    search: _.debounce(async function search(value) {
       const route = {
         name: 'songs',
       };
