@@ -17,22 +17,52 @@ const {
   PORT,
 } = config.server;
 
-app.use(cors());
-app.use(compression());
-app.use(helmet());
-app.use(morgan('combined'));
-app.use(express.json());
-app.use(responseTime());
-app.use(rateLimit({
-  windowMs: 24 * 60 * 60 * 1000,
-  max: 1000,
-  message: 'Too many requests',
-  headers: true,
-}));
-
-app.use(express.urlencoded({
-  extended: true,
-}));
+app.use(cors())
+  .use(compression())
+  .use(helmet())
+  .use(morgan('combined'))
+  .use(express.json())
+  .use(responseTime())
+  .use(rateLimit({
+    windowMs: 24 * 60 * 60 * 1000,
+    max: 1000,
+    message: 'Too many requests',
+    headers: true,
+  }))
+  .use(express.urlencoded({
+    extended: true,
+  }))
+  .use(require('express-status-monitor')({
+    title: 'Server Status',
+    path: '/status',
+    spans: [{
+      interval: 1,
+      retention: 60,
+    },
+    {
+      interval: 15,
+      retention: 60,
+    },
+    {
+      interval: 30,
+      retention: 60,
+    },
+    ],
+    chartVisibility: {
+      cpu: true,
+      mem: true,
+      load: true,
+      responseTime: true,
+      rps: true,
+      statusCodes: true,
+    },
+    healthChecks: [{
+      protocol: 'http',
+      host: 'localhost',
+      path: '/',
+      port: PORT,
+    }],
+  }));
 
 require('./passport');
 

@@ -3,15 +3,24 @@ const path = require('path');
 
 const Sequelize = require('sequelize');
 
-const config = require('../config');
+const {
+  db: {
+    sqlite: {
+      DB_NAME,
+      DB_USER,
+      DB_PASSWORD,
+      options,
+    },
+  },
+} = require('../config');
 
 const db = {};
 
 const sequelize = new Sequelize(
-  config.db.DB_NAME,
-  config.db.DB_USER,
-  config.db.DB_PASSWORD,
-  config.db.options,
+  DB_NAME,
+  DB_USER,
+  DB_PASSWORD,
+  options,
 );
 
 fs.readdirSync(__dirname)
